@@ -14,6 +14,7 @@ class Events extends React.Component {
     }
     ///here we decide how to desplay the events:
     renderEvents() {
+        // console.log(this.props);
         return this.props.events.map((event, index) => <div className="col-md-4" key={index}>
             <div className="row">
                 <h3>{event.title}</h3><button type="button" onClick={this.showEvent.bind(null, event)}>View Event</button>
