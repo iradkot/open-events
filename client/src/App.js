@@ -12,7 +12,7 @@ class App extends React.Component {
       <BrowserRouter>
         <div>
           <Header/>
-          <Register />
+          {/* <Register /> */}
           <Routesss/>
         </div>
       </BrowserRouter>
