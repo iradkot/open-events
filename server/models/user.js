@@ -11,9 +11,13 @@ var userSchema = new mongoose.Schema({
       street: String,
       num: Number, 
   },
+  email: mongoose.Schema.Types.Mixed,
+  password: mongoose.Schema.Types.Mixed,
   myeventsage:[{type:mongoose.Schema.Types.ObjectId, ref: 'event'}]
+
 });
 
 var User = mongoose.model('user', userSchema)
 
 module.exports = User;
+

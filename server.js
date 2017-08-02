@@ -33,14 +33,14 @@ var handler = function (res,next) {
     }
 }
 
-app.get('/events', function(req,res){
-    Event.find(handler(res));
+app.get('/events', function(req,res,next){
+    Event.find(handler(res,next));
 })
-app.get('/users', function(req,res){
-    User.find(handler(res));
+app.get('/users', function(req,res,next){
+    User.find(handler(res,next));
 })
 // create the user
-app.post('/create_user', function(req, res){
+app.post('/create_user', function(req, res,next){
   var newUser = new User({
     first_name: req.body.first_name,
     last_name: req.body.last_name,
@@ -50,7 +50,9 @@ app.post('/create_user', function(req, res){
       city: req.body.city,
       street: req.body.street,
       num: req.body.num
-    }
+    },
+    email:  req.body.email ,
+    password:  req.body.password 
   })
   console.log(newUser);
   newUser.save(handler(res,next));

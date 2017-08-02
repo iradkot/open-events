@@ -10,7 +10,7 @@ class Events extends React.Component {
         }
     }
     showEvent(event) {
-        this.setState({redirect: true, chosenEvent: event.id })
+        this.setState({redirect: true, chosenEvent: event._id })
     }
     ///here we decide how to desplay the events:
     renderEvents() {

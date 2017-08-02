@@ -11293,6 +11293,10 @@ var _Header = __webpack_require__(197);
 
 var _Header2 = _interopRequireDefault(_Header);
 
+var _RegisterForm = __webpack_require__(258);
+
+var _RegisterForm2 = _interopRequireDefault(_RegisterForm);
+
 var _Routes = __webpack_require__(225);
 
 var _Routes2 = _interopRequireDefault(_Routes);
@@ -11327,6 +11331,7 @@ var App = function (_React$Component) {
           'div',
           null,
           _react2.default.createElement(_Header2.default, null),
+          _react2.default.createElement(_RegisterForm2.default, null),
           _react2.default.createElement(_Routes2.default, null)
         )
       );
@@ -26053,7 +26058,7 @@ var Events = function (_React$Component) {
     _createClass(Events, [{
         key: 'showEvent',
         value: function showEvent(event) {
-            this.setState({ redirect: true, chosenEvent: event.id });
+            this.setState({ redirect: true, chosenEvent: event._id });
         }
         ///here we decide how to desplay the events:
 
@@ -27954,6 +27959,228 @@ module.exports = function spread(callback) {
   };
 };
 
+
+/***/ }),
+/* 258 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(37);
+
+var _axios = __webpack_require__(239);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var App = function (_React$Component) {
+  _inherits(App, _React$Component);
+
+  function App(props) {
+    _classCallCheck(this, App);
+
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    _this.state = {
+      first_name: "",
+      last_name: "",
+      age: "",
+      aboutme: "",
+      location: {
+        city: "",
+        street: "",
+        num: ""
+      },
+      email: "",
+      password: ""
+    };
+    return _this;
+  }
+
+  _createClass(App, [{
+    key: 'handleSubmit',
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      console.log("hi");
+      console.log(this.state);
+      _axios2.default.post('/create_user', {
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        age: this.state.age,
+        aboutme: this.state.aboutme,
+        location: {
+          city: this.state.location.city,
+          street: this.state.location.street,
+          num: this.state.location.num
+        },
+        email: this.state.email,
+        password: this.state.password
+      }).then(function (res) {
+        var arrEvent = res.data;
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'container' },
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Registration'
+        ),
+        _react2.default.createElement(
+          'form',
+          { action: '#', id: 'getRegisterForm', onSubmit: this.handleSubmit },
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'FirstName' },
+              'First Name :'
+            ),
+            _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'firstName', placeholder: 'Enter First Name', name: 'firstName', value: this.state.first_name, onChange: function onChange(event) {
+                return _this2.setState({ first_name: event.target.value });
+              } })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'LastName' },
+              'Last Name:'
+            ),
+            _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'LastName', placeholder: 'Enter Last Name', value: this.state.last_name, onChange: function onChange(event) {
+                return _this2.setState({ last_name: event.target.value });
+              } })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'age' },
+              'age:'
+            ),
+            _react2.default.createElement('input', { type: 'number', className: 'form-control', id: 'age', placeholder: 'Enter Age', value: this.state.age, onChange: function onChange(event) {
+                return _this2.setState({ age: event.target.value });
+              } })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'aboutMe' },
+              'About You:'
+            ),
+            _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'aboutMe', placeholder: 'Enter Tell us about you', value: this.state.aboutme, onChange: function onChange(event) {
+                return _this2.setState({ aboutme: event.target.value });
+              } })
+          ),
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Adress'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'city' },
+              'City:'
+            ),
+            _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'city', placeholder: 'Enter The City', value: this.state.location.city, onChange: function onChange(event) {
+                var location = Object.assign({}, _this2.state.location, { city: event.target.value });_this2.setState({ location: location });
+              } })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'street' },
+              'Street:'
+            ),
+            _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'street', placeholder: 'Enter The Street', value: this.state.location.street, onChange: function onChange(event) {
+                var location = Object.assign({}, _this2.state.location, { street: event.target.value });_this2.setState({ location: location });
+              } })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'numHouse' },
+              'Number Of The House:'
+            ),
+            _react2.default.createElement('input', { type: 'number', className: 'form-control', id: 'numHouse', placeholder: 'Enter The Number Of The House', value: this.state.location.num, onChange: function onChange(event) {
+                var location = Object.assign({}, _this2.state.location, { num: event.target.value });_this2.setState({ location: location });
+              } })
+          ),
+          _react2.default.createElement(
+            'h3',
+            null,
+            ' User Name & password'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group registerUserName' },
+            _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'email', placeholder: 'Enter Your Email', value: this.state.email, onChange: function onChange(event) {
+                return _this2.setState({ email: event.target.value });
+              } })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group ' },
+            _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'newPassword', placeholder: 'Password', value: this.state.password, onChange: function onChange(event) {
+                return _this2.setState({ password: event.target.value });
+              } })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group ' },
+            _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'passwordRepeat', placeholder: 'Repeat Password' })
+          ),
+          _react2.default.createElement(
+            'button',
+            { type: 'submit', className: 'btn btn-default' },
+            'Submit'
+          )
+        )
+      );
+    }
+  }]);
+
+  return App;
+}(_react2.default.Component);
+
+exports.default = App;
 
 /***/ })
 /******/ ]);
