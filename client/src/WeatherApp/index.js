@@ -10,7 +10,7 @@ class App extends React.Component {
     }
   }
   componentWillMount() {
-   axios.get(`http://127.0.0.1:3000/events`)
+   axios.get(`/events`)
       .then(res => {
         const arrEvent = res.data;
        this.setState({events:arrEvent});

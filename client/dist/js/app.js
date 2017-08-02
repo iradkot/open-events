@@ -25979,7 +25979,7 @@ var App = function (_React$Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      _axios2.default.get('http://127.0.0.1:3000/events').then(function (res) {
+      _axios2.default.get('/events').then(function (res) {
         var arrEvent = res.data;
         _this2.setState({ events: arrEvent });
         console.log(_this2.state.events[0]);
