@@ -28023,21 +28023,25 @@ var App = function (_React$Component) {
       event.preventDefault();
       console.log("hi");
       console.log(this.state);
-      _axios2.default.post('/create_user', {
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
-        age: this.state.age,
-        aboutme: this.state.aboutme,
-        location: {
-          city: this.state.location.city,
-          street: this.state.location.street,
-          num: this.state.location.num
-        },
-        email: this.state.email,
-        password: this.state.password
-      }).then(function (res) {
-        var arrEvent = res.data;
-      });
+      if (this.state.password === this.state.repeatpassword) {
+        _axios2.default.post('/create_user', {
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
+          age: this.state.age,
+          aboutme: this.state.aboutme,
+          location: {
+            city: this.state.location.city,
+            street: this.state.location.street,
+            num: this.state.location.num
+          },
+          email: this.state.email,
+          password: this.state.password
+        }).then(function (res) {
+          var arrEvent = res.data;
+        });
+      } else {
+        alert("password not the same");
+      }
     }
   }, {
     key: 'render',

@@ -25,7 +25,8 @@ class App extends React.Component {
      event.preventDefault();
     console.log("hi");
     console.log(this.state);
-    axios.post(`/create_user`, {
+    if(this.state.password === this.state.repeatpassword){
+      axios.post(`/create_user`, {
       first_name:this.state.first_name,
       last_name: this.state.last_name,
       age:  this.state.age,
@@ -42,6 +43,10 @@ class App extends React.Component {
         const arrEvent = res.data;
 
       });
+    } else {
+      alert("password not the same");
+    }
+    
   }
  
    
