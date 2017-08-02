@@ -28011,7 +28011,8 @@ var App = function (_React$Component) {
         num: ""
       },
       email: "",
-      password: ""
+      password: "",
+      repeatpassword: ""
     };
     return _this;
   }
@@ -28165,7 +28166,9 @@ var App = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'form-group ' },
-            _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'passwordRepeat', placeholder: 'Repeat Password' })
+            _react2.default.createElement('input', { type: 'password', className: 'form-control', id: 'passwordRepeat', placeholder: 'Repeat Password', value: this.state.repeatpassword, onChange: function onChange(event) {
+                return _this2.setState({ repeatpassword: event.target.value });
+              } })
           ),
           _react2.default.createElement(
             'button',

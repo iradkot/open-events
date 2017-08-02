@@ -17,7 +17,8 @@ class App extends React.Component {
         num: "" ,
       },
       email: "" ,
-      password: "" 
+      password: "",
+      repeatpassword: "" 
     }
   }
   handleSubmit(event) {
@@ -88,7 +89,7 @@ class App extends React.Component {
             <input type="password" className="form-control" id="newPassword" placeholder="Password" value={this.state.password} onChange={(event) => this.setState({password: event.target.value})} />
           </div>
           <div className="form-group ">
-            <input type="password" className="form-control" id="passwordRepeat" placeholder="Repeat Password" />
+            <input type="password" className="form-control" id="passwordRepeat" placeholder="Repeat Password" value={this.state.repeatpassword} onChange={(event) => this.setState({repeatpassword: event.target.value})} />
           </div>
 
           <button type="submit" className="btn btn-default">Submit</button>
